@@ -1,0 +1,795 @@
+@charset "utf-8";
+
+	/*全体*/
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    position: relative;
+    left: 0;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+ul,li,dl,dt,dd {
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	color:#333;
+}
+
+.description {
+	padding-top: 20px;
+	font-size: 1rem;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+}
+
+
+section {
+	padding-top: 100px;
+}
+
+.contens-wrapper {
+	max-width: 1400px;
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+}
+
+section h2 {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 2rem;
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+/*ヘッダー*/
+
+header {
+	width: 100%;
+	height: 70px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: LightSkyBlue;
+	z-index: 10;
+}
+
+.header {
+	width: 95%;
+	max-width: 1480px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header h1, .header a {
+	color: #fafafa;
+	line-height: 70px;
+	cursor: pointer;
+}
+
+.header h1 {
+	letter-spacing: 0.075em;
+	font-size: 35px;
+	font-family: 'Dosis', sans-serif;
+	font-weight: bold:
+	cursor: pointer;
+}
+
+.header h1::before {
+	font-family: "Font Awesome 5 Free";
+	content: '\f1b0';
+	font-weight: 900;
+	margin-right: 0.2em;
+}
+
+header ul a, #slide-menu ul a {
+	font-family: 'Dosis', sans-serif;
+}
+
+.contact-btn {
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+.header ul {
+	display: flex;
+}
+
+.header ul a {
+	display: block;
+	margin: 0 16px;
+	letter-spacing: 0.1em;
+	font-size: 18px;
+	font-weight: semi-bold;
+}
+
+.header ul .contact-btn {
+	margin: 0 auto;
+	padding: 0 1.5em;
+	background-color: darkblue;
+	font-size: 16px;
+	font-weight: normal;
+}
+.header ul .contact-btn:hover {
+	background-color: rgba(0, 0, 225, 0.4);
+}
+
+.header ul li i {
+	display: none;
+	padding: 0 1em;
+	font-size: 1.2rem;
+	color: #fafafa;
+	line-height: 70px;
+	cursor: pointer;
+	transition: .1s;
+}
+
+/*スライドメニュー*/
+
+#slide-menu {
+/*
+	display: none;
+	*/
+	width: 300px;
+	height: calc(100vh - 70px);
+	position: fixed;
+	top: 70px;
+	right: 0;
+	z-index: 10;
+	background-color: #fafafa;
+
+	display: block;
+        transform: translateX(100%);
+        transition: transform 1s;
+}
+
+#slide-menu.active{
+        transform: translateX(0);
+    }
+
+#slide-menu li {
+	line-height: 2rem;
+	margin: 1rem 0;
+	text-align: center;
+}
+
+#slide-menu li a {
+	position: relative;
+	display: inline-block;
+	font-size: 1.25rem;
+	letter-spacing: 0.075em;
+	color: LightSkyBlue;
+}
+
+#slide-menu li a::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: blue;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform .3s;
+}
+
+#slide-menu li a:hover::after {
+  transform: scale(1, 1);
+}
+
+#slide-menu li .contact-btn {
+	margin-bottom: 0.5rem;
+	font-size: 1.1rem;
+}
+
+#slide-menu ol {
+	margin-top: 0.5rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	display: flex;
+	justify-content: space-around;
+}
+
+#slide-menu ol i {
+	font-size: 2.2rem;
+	/*cursor: pointer;*/
+}
+
+#slide-manu ol .fa-skype {
+	color: #00B0F0;
+}
+
+#slide-manu ol .fa-line {
+	color: #00B900;
+}
+
+#slide-manu ol .fa-pinterest {
+	color: #BD081C;
+}
+
+/*オーバーレイ設定*/
+.overlay {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity .5s, width 0s .5s, height 0s .5s;
+}
+.overlay.open {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+	transition: opacity .5s;
+}
+
+/*メインビジュアル*/
+
+.mainvisual {
+	margin-top: 70px;
+	padding: 0;
+	width: 100%;
+	height: calc(100vh - 70px);
+	background-image: url("images/walking-cat.jpg");
+	background-size: cover;
+	display: flex; /* 子要素をflexboxで揃える */
+    flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
+    justify-content: center; /* 子要素をflexboxにより中央に配置する */
+    align-items: center;  /* 子要素をflexboxにより中央に配置する */
+	}
+
+.mainvisual h1 {
+	max-width: 90%;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 5rem;
+	letter-spacing: 0.05em;
+	font-family: 'Dosis', sans-serif;
+	color: #fafafa;
+
+	text-shadow: 0 0 8px rgba(0,0,0,0.8),
+               0 0 1em rgba(0,0,0,0.9);
+
+}
+
+.mainvisual h1::before {
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	content: 'Welcome!';
+	font-size: 0.382em;
+	font-family: ;
+
+	text-shadow: 0 0 8px rgba(0,0,0,0.8),
+							 0 0 1em rgba(0,0,0,0.9);
+
+}
+
+.mainvisual a {
+	box-sizing: border-box;
+	margin-top: 2.5rem;
+	color: #fafafa;
+	cursor: pointer;
+	padding: 0.4em 1em;
+	font-size: 1.18rem;
+	font-family: 'Kosugi Maru', sans-serif;
+	border-radius: 1em;
+	border: 2px solid #fafafa;
+
+	text-shadow: 0 0 8px rgba(0,0,0,0.8),
+							 0 0 1em rgba(0,0,0,0.9);
+
+}
+.mainvisual a:hover {
+	opacity: 0.8;
+}
+
+/*プロフィール*/
+
+.profile {
+	margin: 0;
+}
+
+.profile h2 {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 2rem;
+	font-family: 'Kosugi Maru', sans-serif;
+
+}
+
+.profile .profile-content {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	margin-top: 70px;
+}
+
+.profile .profile-content .img {
+	width: 30%;
+}
+
+.profile .profile-content .img img {
+	width: 100%;
+	margin: auto;
+	object-fit: cover;
+}
+
+.profile .profile-content .text-group {
+	width: 60%;
+	margin: auto 0;
+	margin-left: 5%;
+	box-sizing: border-box;
+	padding: 50px 7%;
+	background-color: LightSkyBlue;
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+.profile .profile-content .text-group h3 {
+	font-size: 1.5em;
+}
+
+.profile .profile-content .text-group .description {
+	padding-top: 0.4em;
+	font-size: 16px;
+}
+
+.profile .profile-content .text-group p:first-of-type {
+	padding-top: 0;
+	margin-top: 20px;
+}
+
+/*スキル*/
+
+.skill {
+	margin-top: 50px;
+}
+
+.skill-group {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.skill-unit {
+	margin-top: 50px;
+	width: 30%;
+}
+
+.skill-unit p {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.skill-unit p img {
+	width: 75%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.skill-unit h3 {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1.5rem;
+	font-family: 'Dosis', sans-serif;
+}
+
+.skill-unit .adobexd::after {
+	content: "icons by icons8.jp/icons";
+	display: block;
+	font-size: 10px;
+	float: right;
+	color: LightGrey;
+}
+
+
+/*実績*/
+.works {
+	margin-top: 50px;
+}
+
+.works h2 {
+	padding-bottom: 40px;
+}
+
+.works ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+/*カード*/
+.works ul li {
+	margin-top: 30px;
+	width: 30%;
+	height: 400px;
+	position: relative;
+	border-radius: 30px;
+	overflow:hidden;
+
+	box-shadow: -2px 2px 10px 0px rgba(#444, 0.4);
+}
+
+/*画像*/
+.works li .img {
+	width: 100%;
+	height: 100%;
+
+	z-index: -1;
+}
+
+.works ul li .img img {
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	object-fit: cover;
+	object-position: 0 0;
+}
+
+/*見出し*/
+.works h3 {
+	font-size: 1.2rem;
+	font-family: 'Kosugi Maru', sans-serif;
+	color: #fafafa;
+	display: block;
+	width: 100%;
+	position: absolute;
+	top: 32px;
+	left: auto;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.works .progate h3 {
+		top: calc(32px - 0.927em);
+	}
+
+	.works .progate h3::before {
+		content: "Progate";
+		display: block;
+		font-size: 0.618em;
+		letter-spacing: 0.05em;
+		font-family: 'Dosis', sans-serif;
+		padding-bottom: 0.5em;
+	}
+
+.works .cooks h3 {
+		top: calc(32px - 0.75em);
+	}
+
+	.works .cooks h3::before {
+		content: "ちまちまスキルアップ研究所";
+		display: block;
+		font-size: 0.5em;
+		letter-spacing: 0.07em;
+		font-family: 'Kosugi Maru', sans-serif;
+		padding-bottom: 0.5em;
+	}
+
+	.works .cooks h3::after {
+		content: "※現在非公開";
+		display: block;
+		font-size: 0.618em;
+		letter-spacing: 0.05em;
+		font-family: 'Kosugi Maru', sans-serif;
+		padding-top: 0.7em;
+		opacity: 0.7;
+	}
+
+.works .kuri-note h3 {
+		top: calc(32px - 0.75em);
+	}
+
+	.works .kuri-note h3::before {
+		content: "くりnote";
+		display: block;
+		font-size: 0.5em;
+		letter-spacing: 0.07em;
+		font-family: 'Kosugi Maru', sans-serif;
+		padding-bottom: 0.5em;
+	}
+
+	.works .kuri-note h3::after {
+		content: "※現在非公開";
+		display: block;
+		font-size: 0.618em;
+		letter-spacing: 0.05em;
+		font-family: 'Kosugi Maru', sans-serif;
+		padding-top: 0.7em;
+		opacity: 0.7;
+	}
+
+.works .NPO h3::after {
+	content: "※Comming Soon";
+	display: block;
+	font-size: 0.618em;
+	letter-spacing: 0.07em;
+	font-family: 'Kosugi Maru', sans-serif;
+	padding-top: 0.7em;
+	opacity: 0.7;
+}
+
+
+.works .alphabet {
+	font-family: 'Dosis', sans-serif;
+}
+
+/*本文*/
+.works .description {
+	font-size: 14px;
+	font-family: 'Kosugi Maru', sans-serif;
+	color: #fafafa;
+	letter-spacing: 0.075em;
+
+	display: none;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0 10%;
+	text-align: center;
+	position: absolute;
+	bottom: 50px;
+	left: 0;
+
+}
+
+/*追加説明*/
+.works .caption {
+	font-size: 18px;
+	line-height: 1.2;
+	color: #fafafa;
+	font-family: 'Dosis', sans-serif;
+
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0 18px;
+	text-align: center;
+	position: absolute;
+	bottom: 5px;
+	left: auto;
+}
+
+.works ul h3, .works ul p, .works ul i {
+	z-index: 2;
+}
+
+/*画像用オーバーレイ*/
+.works li .img-overlay {
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	background: rgb(47,79,79,0.2);
+}
+
+/*
+.works .owl .img-overlay {
+	background: rgba(93,104,47, 0.3);
+}
+
+.works .progate .img-overlay {
+	background: rgba(105,62,101,0.2);
+}
+
+.works .cooks .img-overlay {
+	background: rgba(66, 38, 57, 0.2);
+}
+
+.works .kuri-note .img-overlay {
+	background: rgba(23,46,75, 0.2);
+}
+
+.works .NPO .img-overlay {
+	background: rgba(30,5,13, 0.2);
+}
+*/
+
+/*ホバーイベント*/
+.works .description {
+	z-index: 4;
+}
+
+.works li .color-overlay {
+	opacity: 0;
+	transition: all .5s;
+
+	display: block;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.works .color-overlay.active {
+	opacity: 0.3;
+	background: Grey;
+}
+
+
+/*サービス*/
+.service {
+	margin-top: 30px;
+}
+
+.service ul {
+	margin: 0 auto;
+	margin-top: 50px;
+	box-sizing: border-box;
+	max-width: 1200px;
+	padding: 0 5%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.service ul li {
+	width: 30%;
+	margin-top: 50px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.service figure {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.service figure img {
+	width: 40%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.service h3 {
+	padding-bottom: 15px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1.2rem;
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+.service p {
+	width: 85%;
+	margin: 0 auto;
+	font-size: 1rem;
+	letter-spacing: 0.1em;
+	line-height: 1.5;
+	font-family: 'Kosugi Maru', sans-serif;
+}
+
+
+.contact {
+	margin: 50px 0;
+	padding-top: 50px;
+}
+
+.contact h2 {
+	font-size: 1.5rem;
+	color: #00008B;
+}
+
+.contact p {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
+	font-size: 0.8rem;
+	letter-spacing: 0.075em;
+	font-family: 'Kosugi Maru', sans-serif;
+	color: #00008B;
+}
+
+/*SNS*/
+.sns {
+	margin: 0;
+	padding: 0;
+}
+
+.sns ul {
+	width: 100%;
+	display: flex;
+	/*
+	box-sizing: border-box;
+	padding: 30px 0;
+	background: linear-gradient(90deg, #00B900 0%, #00B900 50%, #00B0F0 50%, #00B0F0 100%);
+	*/
+
+}
+
+.sns ul li {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.line {
+	background: #00B900;
+}
+
+.skype {
+	background: #00B0F0;
+}
+
+.sns ul li a {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 3rem;
+	color: #fafafa;
+	line-height: 2em;
+
+	transition: 1s;
+}
+
+.sns ul li:hover {
+	opacity: 0.8;
+}
+
+/*フッター*/
+footer {
+	width: 100%;
+	height: 50px;
+	background: darkblue;
+}
+
+.footer {
+	width: 95%;
+	max-width: 1480px;
+	margin: 0 auto;
+}
+
+.footer h1 {
+	display: block;
+	height: 50px;
+	text-align: center;
+	margin: 0 auto;
+	color: #fafafa;
+	cursor: pointer;
+
+	letter-spacing: 0.075em;
+	line-height: 50px;
+	font-size: 22px;
+	font-family: 'Dosis', sans-serif;
+	font-weight: bold:
+	cursor: pointer;
+}
+
+.footer h1::before {
+	font-family: "Font Awesome 5 Free";
+	content: '\f1b0';
+	font-weight: 600;
+	margin-right: 0.2em;
+}
+
+.footer h1::after {
+	content: "©2020 Ryou";
+	padding-left: 10px;
+	font-size: 10px;
+	color: #fafafa;
+	font-family: 'Dosis', sans-serif;
+	font-weight: normal;
+	line-height: 60px;
+}
