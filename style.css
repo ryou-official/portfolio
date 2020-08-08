@@ -194,31 +194,6 @@ header ul a, #slide-menu ul a {
 	font-size: 1.1rem;
 }
 
-#slide-menu ol {
-	margin-top: 0.5rem;
-	margin-left: 1rem;
-	margin-right: 1rem;
-	display: flex;
-	justify-content: space-around;
-}
-
-#slide-menu ol i {
-	font-size: 2.2rem;
-	/*cursor: pointer;*/
-}
-
-#slide-manu ol .fa-skype {
-	color: #00B0F0;
-}
-
-#slide-manu ol .fa-line {
-	color: #00B900;
-}
-
-#slide-manu ol .fa-pinterest {
-	color: #BD081C;
-}
-
 /*オーバーレイ設定*/
 .overlay {
   content: "";
