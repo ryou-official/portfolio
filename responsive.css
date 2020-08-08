@@ -1,0 +1,178 @@
+@media screen and (max-width: 1000px) {
+
+  .section {
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+
+  /*ヘッダー タブレット*/
+  .header {
+  	width: 100%;
+  	margin: 0 auto;
+  	display: flex;
+  	justify-content: space-between;
+  }
+  .header h1 {
+    margin-left: 0.5em;
+  }
+
+  /*メインビジュアル タブレット*/
+  .mainvisual h1 {
+    font-size: 4rem;
+  }
+
+  .mainvisual a {
+    margin-top: 2em;
+    font-size: 0.944rem;
+  }
+
+  /*プロフィール タブレット*/
+
+  /*実績一覧 タブレット*/
+  .works ul li {
+    width: 45%;
+  }
+
+  /**/
+  .service h3 {
+    font-size: 1rem;
+  }
+
+  .service p {
+    width: 95%;
+    font-size: 0.8rem;
+  }
+
+}
+
+@media screen and (max-width: 670px) {
+
+  section {
+  	padding-top: 90px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  /*ヘッダー SP*/
+  .header h1 {
+    margin-left: 0.7em;
+    font-size: 28px;
+  }
+
+  .header li a, .header li .fa-times {
+    display: none;
+  }
+
+  .header li .fa-bars {
+    display: block;
+    padding: 0 1em;
+    font-size: 1.2rem;
+    color: #fafafa;
+    line-height: 70px;
+  }
+
+  /*メインビジュアル SP*/
+  .mainvisual h1 {
+    font-size: 3.5rem;
+  }
+  .mainvisual a {
+    width: 85%;
+    max-width: 15rem;
+    text-align: center;
+}
+
+  /*プロフィール SP*/
+  .profile .profile-content {
+    margin-top: 35px;
+  }
+
+  .profile .profile-content .img {
+    display: none;
+  }
+
+  .profile .profile-content .text-group {
+    width: 90%;
+  }
+
+  /*スキル　SP*/
+  .skill {
+    margin-top: 30px;
+  }
+
+  .skill-unit {
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .skill-unit:first-of-type {
+    margin-top: 10px;
+  }
+
+  .skill-unit h3 {
+    font-size: 1.3rem;
+  }
+
+  /*実績一覧 SP*/
+  .works {
+    margin-top: 50px;
+  }
+
+  .works h2 {
+  	padding-bottom: 20px;
+  }
+
+  .works ul li {
+    width:80%;
+  }
+
+  .works ul li:first-of-type {
+    margin-top: 10px;
+  }
+
+
+  /*サービス SP*/
+  .service {
+    margin-top: 50px;
+  }
+
+  .service ul li {
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 20px;
+  }
+
+  .service p {
+    width: 70%;
+    max-width: 350px;
+  }
+
+  /*コンタクト SP*/
+  .contact p {
+    width: 85%;
+    line-height: 1.5;
+  }
+
+@media screen and (max-width: 320px) {
+
+  /*メインビジュアル SE*/
+  .minevisual {
+    justify-content: left; /* 子要素をflexboxにより中央に配置する */
+    align-items: left;
+  }
+
+  .mainvisual h1 {
+    text-align: left;
+    font-size: 3rem;
+  }
+
+  .mainvisual h1::before {
+    text-align: left;
+  }
+
+}
