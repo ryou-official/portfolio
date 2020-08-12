@@ -222,7 +222,7 @@ header ul a, #slide-menu ul a {
 	padding: 0;
 	width: 100%;
 	height: calc(100vh - 70px);
-	background-image: url("images/walking-cat.jpg");
+	background-image: url("images.zip/walking-cat.jpg");
 	background-size: cover;
 	display: flex; /* 子要素をflexboxで揃える */
     flex-direction: column; /* 子要素をflexboxにより縦方向に揃える */
